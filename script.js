@@ -173,14 +173,14 @@ function showAlreadyPlayedModal(gameState) {
     
     modal.innerHTML = `
         <div class="modal-content">
-            <h2>🎮 Кто-то уже играл недавно!</h2>
+            <h2>⚠️ Ой!</h2>
             <p><strong>Кто-то уже играл недавно!</strong></p>
             <div style="margin: 20px 0; padding: 15px; background: rgba(102, 126, 234, 0.1); border-radius: 10px;">
                 <p><strong>И даже выиграл:</strong> ${gameState.selectedCard.title}</p>
                 <p><em>${gameState.selectedCard.message}</em></p>
                 <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">Кажется это было: ${playedDate}</p>
             </div>
-            <p><strong>Но ничего, можно сыграть еще раз через:</strong><br>${timeRemaining}</p>
+            <p><strong>Но можно сыграть еще раз через:</strong><br>${timeRemaining}</p>
             <div class="modal-buttons">
                 <button onclick="closeAlreadyPlayedModal()" style="background: linear-gradient(145deg, #667eea, #764ba2); color: white; border: none; padding: 12px 24px; border-radius: 25px; cursor: pointer;">Ну ОК</button>
             </div>
