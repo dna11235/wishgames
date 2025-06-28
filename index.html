@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seal Games</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Game Selection Screen -->
+    <div id="game-selection" class="game-selection-screen">
+        <div class="hub-container">
+            <header class="hub-header header-component">
+                <h1>🦭 Seal Wish Games</h1>
+                <p>Choose your adventure and test your luck!</p>
+            </header>
+            
+            <div class="games-grid">
+                <div class="game-card card-component" data-game="card-picker">
+                    <div class="game-icon">🃏</div>
+                    <h3>Taro of Fortune</h3>
+                    <p>Each card holds a unique surprise!</p>
+                    <div class="game-features">
+                        <span class="feature">• 9 cards to choose from</span>
+                        <span class="feature">• One chance to pick</span>
+                    </div>
+                    <button class="play-btn btn-component" onclick="startGame('card-picker')">
+                        ▶ Play Now
+                    </button>
+                </div>
+                
+                <div class="game-card card-component" data-game="slot-machine">
+                    <div class="game-icon">🎰</div>
+                    <h3>Slot Machine</h3>
+                    <p>Pull the lever and test your luck!</p>
+                    <div class="game-features">
+                        <span class="feature">• Casino-style animation</span>
+                        <span class="feature">• All 8 winning combinations</span>
+                    </div>
+                    <button class="play-btn btn-component" onclick="startGame('slot-machine')">
+                        ▶ Play Now
+                    </button>
+                </div>
+                
+                <div class="game-card card-component" data-game="spinning-wheel">
+                    <div class="game-icon">🛞</div>
+                    <h3>Spinning Wheel</h3>
+                    <p>Spin the wheel of fortune!</p>
+                    <div class="game-features">
+                        <span class="feature">• Classic wheel spin mechanics</span>
+                        <span class="feature">• 6 sections with card titles</span>
+                    </div>
+                    <button class="play-btn btn-component" onclick="startGame('spinning-wheel')">
+                        ▶ Spin Now
+                    </button>
+                </div>
+                
+                <!-- Placeholder for future games -->
+                <!--
+                <div class="game-card card-component coming-soon">
+                    <div class="game-icon">🔮</div>
+                    <h3>Coming Soon</h3>
+                    <p>More exciting card games are on the way. Stay tuned for updates!</p>
+                    <div class="game-features">
+                        <span class="feature">• Mystery game mode</span>
+                        <span class="feature">• New mechanics</span>
+                        <span class="feature">• Enhanced graphics</span>
+                    </div>
+                    <button class="play-btn btn-component btn-disabled" disabled>
+                        🔒 Coming Soon
+                    </button>
+                </div>
+                -->
+            </div>
+            
+            <div class="hub-footer">
+                <p>Select a game above to begin your card adventure!</p>
+                <div><button class="play-btn" id="clear-state">Clear State</button></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card Picker Game -->
+    <div id="card-picker-game" class="game-screen hidden">
+        <div class="game-container">
+            <header>
+                <div class="game-nav">
+                    <button class="back-btn" onclick="backToHub()">← Back to Hub</button>
+                </div>
+                <h1>Card Game</h1>
+                <p>Choose wisely! You can only pick one card.</p>
+            </header>
+            
+            <div id="game-board" class="game-board">
+                <!-- Cards will be dynamically generated here -->
+            </div>
+            
+            <div id="result-modal" class="result-modal hidden">
+                <div class="modal-content">
+                    <h2>Game Complete!</h2>
+                    <p id="result-message"></p>
+                    <div class="modal-buttons">
+                        <button class="play-btn" onclick="backToHub()">Back to Hub</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slot Machine Game -->
+    <div id="slot-machine-game" class="game-screen hidden">
+        <div class="game-container">
+            <header>
+                <div class="game-nav">
+                    <button class="back-btn" onclick="backToHub()">← Back to Hub</button>
+                </div>
+                <h1>🎰 Triple Card Slots</h1>
+                <p>Match the combination to win your card reward!</p>
+            </header>
+            
+            <div class="slot-machine-container">
+                <!-- Three Slot Reels -->
+                <div class="slot-machine-display">
+                    <div class="slot-reels">
+                        <div class="slot-reel-container">
+                            <div id="slot-reel-1" class="slot-reel"></div>
+                        </div>
+                        
+                        <div class="slot-reel-container">
+                            <div id="slot-reel-2" class="slot-reel"></div>
+                        </div>
+                        
+                        <div class="slot-reel-container">
+                            <div id="slot-reel-3" class="slot-reel"></div>
+                        </div>
+                        <button id="spin-button" class="play-btn">
+                            <span class="button-text">🎰 SPIN</span>
+                        </button>
+                    </div>
+                    
+                    
+                    <!-- Legend Section -->
+                    <div class="slot-legend">
+                        <h3>🏆 Winning Combinations</h3>
+                        <div id="slot-legend-list" class="legend-list">
+                            <!-- Legend items will be populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Result Modal -->
+            <div id="slot-result-modal" class="result-modal hidden">
+                <div class="modal-content">
+                    <h2>🎉 Slot Result!</h2>
+                    <p id="slot-result-message"></p>
+                    <div class="modal-buttons">
+                        <button class="play-btn btn-component" onclick="closeSlotModal()">
+                            Back to Hub
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Spinning Wheel Game -->
+    <div id="spinning-wheel-game" class="game-screen hidden">
+        <div class="game-container">
+            <header>
+                <div class="game-nav">
+                    <button class="back-btn" onclick="backToHub()">← Back to Hub</button>
+                </div>
+                <h1>🛞 Spinning Wheel</h1>
+                <p>Spin the wheel and let fate decide your fortune!</p>
+            </header>
+            
+            <div class="wheel-container">                
+                <div class="wheel-wrapper">
+                    <div id="wheel" class="wheel">
+                        <!-- Wheel sections will be dynamically generated -->
+                        
+                    </div>
+                    <div class="wheel-arrow">▲</div>
+                </div>
+                <button id="wheel-center-button" class="play-btn" onclick="spinWheel()">Click SPIN to play!</button>
+                <div id="wheel-result-text" style="font-size: 1.2rem; color: #333; font-weight: bold;">
+                </div>
+                
+            </div>
+            
+            <div id="wheel-result-modal" class="result-modal hidden">
+                <div class="modal-content">
+                    <h2>🎉 Wheel Result!</h2>
+                    <p id="wheel-result-message"></p>
+                    <div class="modal-buttons">
+                        <button class="play-btn btn-component" onclick="closeWheelModal()">
+                            Back to Hub
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
