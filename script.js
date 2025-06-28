@@ -1,6 +1,6 @@
 // ===== CONFIGURATION =====
 const CONFIG = {
-    GAME_EXPIRY_DAYS: 3,
+    GAME_EXPIRY_DAYS: 4,
     STORAGE_KEY: 'cardGameState',
     CARD_SELECTION_COUNT: 9,
     SLOT_CYCLES: 5,
@@ -18,27 +18,27 @@ const CONFIG = {
 
 // Card data - shared between both games
 const CARDS = Object.freeze([
-    { id: 1, title: "Lucky Card", message: "Congratulations! You found the lucky card!" },
-    { id: 2, title: "Mystery Box", message: "A mysterious treasure awaits you!" },
-    { id: 3, title: "Golden Ticket", message: "You've won a golden ticket to adventure!" },
-    { id: 4, title: "Magic Potion", message: "This potion grants you one wish!" },
-    { id: 5, title: "Ancient Scroll", message: "The scroll reveals ancient wisdom." },
-    { id: 6, title: "Diamond Gem", message: "A precious diamond worth a fortune!" },
-    { id: 7, title: "Silver Key", message: "This key opens any door you choose." },
-    { id: 8, title: "Phoenix Feather", message: "A rare feather with magical properties." },
-    { id: 9, title: "Crystal Ball", message: "The crystal ball shows your future." },
-    { id: 10, title: "Enchanted Ring", message: "This ring protects you from all harm." },
-    { id: 11, title: "Hidden Treasure", message: "You've discovered a hidden treasure chest!" },
-    { id: 12, title: "Star Fragment", message: "A fragment from a fallen star!" },
-    { id: 13, title: "Dragon Scale", message: "A powerful scale from an ancient dragon." },
-    { id: 14, title: "Mystic Orb", message: "The orb glows with mysterious energy." },
-    { id: 15, title: "Royal Crown", message: "A crown fit for royalty!" },
-    { id: 16, title: "Healing Herb", message: "This herb can cure any ailment." },
-    { id: 17, title: "Lightning Bolt", message: "Harness the power of lightning!" },
-    { id: 18, title: "Ocean Pearl", message: "A pearl from the depths of the ocean." },
-    { id: 19, title: "Forest Spirit", message: "The spirit of the forest blesses you." },
-    { id: 20, title: "Time Crystal", message: "This crystal can manipulate time itself." },
-    { id: 21, title: "Cosmic Energy", message: "You've absorbed cosmic energy from the universe!" }
+    { id: 1, title: "Кружка Кофе", message: "Горячий, бодрящий и ароматный, тебе выбирать где!" },
+    { id: 2, title: "Завтрак в Кафе", message: "Выбирай уютную кафешку и начни день с приятного завтрака, я угощаю!" },
+    { id: 3, title: "Массажное кресло", message: "Пол часа максимального расслабления, просто кай-фуй!" },
+    { id: 4, title: "Поход в Музей", message: "Порадуй глаза и разум в закрытом помещении, потом расскажешь мне!" },
+    { id: 5, title: "Кофточка на маркетплейсе", message: "Не только кофточка на самом деле, что угодно в пределах 5000р." },
+    { id: 6, title: "Массаж", message: "Кресло хорошо, но пусть тебя разомнут профессионалы!" },
+    { id: 7, title: "Ноготочки", message: "Я бы даже сказал коготки, давай - звони мастеру." },
+    { id: 8, title: "Брови", message: "Обе. Чтобы были ровные как долины Монголии." },
+    { id: 9, title: "Книга", message: "Прям настоящая, в переплете, чтобы пахла бумагой." },
+    { id: 10, title: "МЦД в подмосковье", message: "Тюлень прилагается, поехали куда-то на конечную." },
+    { id: 11, title: "Концерт", message: "Ты давно вообще была на концерте? Вспомни кто тебе нравится и проверь афишу!" },
+    { id: 12, title: "Театр", message: "Кричали женщины: ура! И в воздух чепчики бросали!" },
+    { id: 13, title: "Стейк", message: "Только скажи и у тебя будет самый сочный стейк на этой льдине." },
+    { id: 14, title: "Бар", message: "Все, не отнекивайся диетами, будет что-то необычное и интересное." },
+    { id: 15, title: "Стрижка", message: "Или окрашивание, или другая весомая косметическая процедура." },
+    { id: 16, title: "Эпиляция", message: "Если портал был открыт, он должен быть закрыт." },
+    { id: 17, title: "Игра", message: "Весь стим в твоем распоряжении!" },
+    { id: 18, title: "Безделушка с Али", message: "Что-нибудь, что тебя порадует, или поднимет тебе настроение." },
+    { id: 19, title: "Деньги", message: "Самые скучные 5000р, зато их можно потратить на что угодно." },
+    { id: 20, title: "Фотосессия", message: "Берем Тюленя в охапку, фотоапарат и едем делать тебе красивые фоточки." },
+    { id: 21, title: "Не совсем приз", message: "Но теперь ты можешь добавить свое собственное желание во все будущие игры!" }
 ]);
 
 // ===== GAME STATE =====
@@ -155,11 +155,11 @@ function formatTimeRemaining(expiresAt) {
     const minutes = Math.floor((remaining % (60 * 60 * 1000)) / (60 * 1000));
     
     if (days > 0) {
-        return `${days} day${days > 1 ? 's' : ''}, ${hours} hour${hours > 1 ? 's' : ''}`;
+        return `${days} ${days > 1 ? 'Дня' : 'День'} и ${hours} ${hours > 1 ? 'Часа' : 'Час'}`;
     } else if (hours > 0) {
-        return `${hours} hour${hours > 1 ? 's' : ''}, ${minutes} minute${minutes > 1 ? 's' : ''}`;
+        return `${hours} ${hours > 1 ? 'Часа' : 'Час'} и ${minutes} ${minutes > 1 ? 'Минуты' : 'Минута'}`;
     } else {
-        return `${minutes} minute${minutes > 1 ? 's' : ''}`;
+        return `${minutes} ${minutes > 1 ? 'Минуты' : 'Минута'}`;
     }
 }
 
@@ -173,16 +173,16 @@ function showAlreadyPlayedModal(gameState) {
     
     modal.innerHTML = `
         <div class="modal-content">
-            <h2>🎮 Already Played!</h2>
-            <p><strong>You've already played the card game!</strong></p>
+            <h2>🎮 Кто-то уже играл недавно!</h2>
+            <p><strong>Кто-то уже играл недавно!</strong></p>
             <div style="margin: 20px 0; padding: 15px; background: rgba(102, 126, 234, 0.1); border-radius: 10px;">
-                <p><strong>Your Result:</strong> ${gameState.selectedCard.title}</p>
+                <p><strong>И даже выиграл:</strong> ${gameState.selectedCard.title}</p>
                 <p><em>${gameState.selectedCard.message}</em></p>
-                <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">Played on: ${playedDate}</p>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">Кажется это было: ${playedDate}</p>
             </div>
-            <p><strong>Next game available in:</strong><br>${timeRemaining}</p>
+            <p><strong>Но ничего, можно сыграть еще раз через:</strong><br>${timeRemaining}</p>
             <div class="modal-buttons">
-                <button onclick="closeAlreadyPlayedModal()" style="background: linear-gradient(145deg, #667eea, #764ba2); color: white; border: none; padding: 12px 24px; border-radius: 25px; cursor: pointer;">OK</button>
+                <button onclick="closeAlreadyPlayedModal()" style="background: linear-gradient(145deg, #667eea, #764ba2); color: white; border: none; padding: 12px 24px; border-radius: 25px; cursor: pointer;">Ну ОК</button>
             </div>
         </div>
     `;
@@ -356,7 +356,7 @@ function showCardPickerResult(selectedCard) {
     const resultMessage = document.getElementById('result-message');
     
     resultMessage.innerHTML = `
-        You selected: <strong>${selectedCard.title}</strong><br>
+        Твой приз: <strong>${selectedCard.title}</strong><br>
         <em>${selectedCard.message}</em>
     `;
     
@@ -707,15 +707,13 @@ function showSlotResult(winningCard) {
         saveGameResult(winningCard);
         
         resultMessage.innerHTML = `
-            🎉 <strong>Congratulations!</strong><br>
-            You won: <strong>${winningCard.title}</strong><br>
+            Твой приз: <strong>${winningCard.title}</strong><br>
             <em>${winningCard.message}</em>
         `;
     } else {
         resultMessage.innerHTML = `
-            😔 <strong>No Match!</strong><br>
-            Better luck next time!<br>
-            <em>Try again for a different combination.</em>
+            Вообще по задумке ты не можешь проиграть!<br>
+            <em>Но жизнь не справедлива, пожалуйся мне об этом.</em>
         `;
     }
     
@@ -789,9 +787,9 @@ function checkExistingGameOnLoad() {
             const playedDate = new Date(existingGameState.playedAt).toLocaleDateString();
             const timeRemaining = formatTimeRemaining(existingGameState.expiresAt);
             hubFooter.innerHTML = `
-                <strong style="color: #ffd700;">⚠️ Game Already Played</strong><br>
-                Last result: ${existingGameState.selectedCard.title}<br>
-                Next game available in: ${timeRemaining}
+                <strong style="color: #ffd700;">⚠️ Спасибо за игру! ⚠️</strong><br>
+                Последний приз: ${existingGameState.selectedCard.title}<br>
+                Можно сыграть еще через: ${timeRemaining}
             `;
         }
     }
@@ -911,7 +909,7 @@ function spinWheel() {
     
     spinButton.classList.add('spinning');
     spinButton.disabled = true;
-    spinButton.textContent = 'Spinning...';
+    spinButton.textContent = 'Крутится-вертится...';
     
     const wheel = document.getElementById('wheel');
     
@@ -954,7 +952,7 @@ function spinWheel() {
         console.log('Final angle:', finalAngle, 'Active section:', activeSection, 'Card:', wheelCurrentCard.title);
         
         // Display the actual card title
-        spinButton.textContent = `The result is: ${wheelCurrentCard.title}`;
+        spinButton.textContent = `И ты выиграла: ${wheelCurrentCard.title}`;
         
         setTimeout(() => {
             showWheelResult();
@@ -971,7 +969,7 @@ function showWheelResult() {
     const resultMessage = document.getElementById('wheel-result-message');
     
     resultMessage.innerHTML = `
-        You selected: <strong>${wheelCurrentCard.title}</strong><br>
+       Твой приз: <strong>${wheelCurrentCard.title}</strong><br>
         <em>${wheelCurrentCard.message}</em>
     `;
     
@@ -1008,7 +1006,7 @@ function resetSpinningWheelState() {
         spinButton.disabled = false;
         spinButton.style.opacity = '1';
         spinButton.style.cursor = 'pointer';
-        spinButton.textContent = 'Click SPIN to play!';
+        spinButton.textContent = 'Я назову слово целиком!';
     }
     
     if (resultText) {
@@ -1039,11 +1037,11 @@ function resetSpinningWheel() {
         spinButton.disabled = false;
         spinButton.style.opacity = '1';
         spinButton.style.cursor = 'pointer';
-        spinButton.textContent = 'SPIN';
+        spinButton.textContent = 'Я назову слово целиком!';
     }
     
     if (resultText) {
-        resultText.textContent = 'Click SPIN to play!';
+        resultText.textContent = '';
     }
     
     const wheel = document.getElementById('wheel');
@@ -1090,10 +1088,10 @@ window.closeSlotModal = closeSlotModal;
 window.spinSlotMachine = spinSlotMachine;
 
 // Event Listeners
-document.getElementById("clear-state").addEventListener("click", () => {
-    deleteGameData('cardGameState');
-    window.location.reload();
-});
+// document.getElementById("clear-state").addEventListener("click", () => {
+//     deleteGameData('cardGameState');
+//     window.location.reload();
+// });
 document.addEventListener('DOMContentLoaded', function() {
     // Test storage functionality
     testStorage();
