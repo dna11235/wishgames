@@ -761,7 +761,6 @@ body {
     position: relative;
     width: 80px;
     height: 80px;
-    background: var(--card-back-gradient);
     border-radius: var(--radius-md);
     overflow: hidden;
     border: 2px solid #f093fb;
@@ -819,8 +818,8 @@ body {
 }
 
 .slot-value.active {
-    background: linear-gradient(145deg, #f39c12, #e67e22);
-    color: white;
+    background: var(--background-gradient);
+    color: var(--text-light);
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
     box-shadow: 0 0 10px rgba(243, 156, 18, 0.7);
     z-index: 10;
@@ -935,7 +934,9 @@ body {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
     box-shadow: 0 0 10px rgba(40, 167, 69, 0.3);
 }
-
+.legend-item.winning .legend-card {
+    color: var(--text-light);
+}
 /* Responsive Design for Slot Machine */
 @media (max-width: 768px) {
     .slot-machine-container {
