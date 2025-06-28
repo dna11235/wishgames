@@ -782,11 +782,11 @@ function checkExistingGameOnLoad() {
     if (existingGameState) {
         console.log('Found existing game state:', existingGameState);
         // Add visual indicator to hub that game was already played
-        const hubFooter = document.querySelector('.hub-footer p');
-        if (hubFooter) {
+        const hubHeader = document.querySelector('.hub-header p');
+        if (hubHeader) {
             const playedDate = new Date(existingGameState.playedAt).toLocaleDateString();
             const timeRemaining = formatTimeRemaining(existingGameState.expiresAt);
-            hubFooter.innerHTML = `
+            hubHeader.innerHTML = `
                 <strong style="color: #ffd700;">⚠️ Спасибо за игру! ⚠️</strong><br>
                 Последний приз: ${existingGameState.selectedCard.title}<br>
                 Можно сыграть еще через: ${timeRemaining}
@@ -1006,7 +1006,7 @@ function resetSpinningWheelState() {
         spinButton.disabled = false;
         spinButton.style.opacity = '1';
         spinButton.style.cursor = 'pointer';
-        spinButton.textContent = 'Я назову слово целиком!';
+        spinButton.textContent = 'Вращать барабан';
     }
     
     if (resultText) {
@@ -1037,7 +1037,7 @@ function resetSpinningWheel() {
         spinButton.disabled = false;
         spinButton.style.opacity = '1';
         spinButton.style.cursor = 'pointer';
-        spinButton.textContent = 'Я назову слово целиком!';
+        spinButton.textContent = 'Вращать барабан';
     }
     
     if (resultText) {
