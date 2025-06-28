@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seal Games</title>
+    <title>Тюленьи Игры</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,47 +11,47 @@
     <div id="game-selection" class="game-selection-screen">
         <div class="hub-container">
             <header class="hub-header header-component">
-                <h1>🦭 Seal Wish Games</h1>
-                <p>Choose your adventure and test your luck!</p>
+                <h1>🦭 Тюленьи Игры</h1>
+                <p>Привет Оля, я хочу сыграть с тобой в игру!</p>
             </header>
             
             <div class="games-grid">
                 <div class="game-card card-component" data-game="card-picker">
                     <div class="game-icon">🃏</div>
-                    <h3>Taro of Fortune</h3>
-                    <p>Each card holds a unique surprise!</p>
-                    <div class="game-features">
+                    <h3>Расклад <s>Таро</s> Удачи</h3>
+                    <p>За каждой карточкой скрыт приз, но можно выбрать лишь одну!</p>
+                    <!-- <div class="game-features">
                         <span class="feature">• 9 cards to choose from</span>
                         <span class="feature">• One chance to pick</span>
-                    </div>
+                    </div> -->
                     <button class="play-btn btn-component" onclick="startGame('card-picker')">
-                        ▶ Play Now
+                        ▶ Гадать
                     </button>
                 </div>
                 
                 <div class="game-card card-component" data-game="slot-machine">
                     <div class="game-icon">🎰</div>
-                    <h3>Slot Machine</h3>
-                    <p>Pull the lever and test your luck!</p>
-                    <div class="game-features">
+                    <h3>Однорукий <s>Бандит</s> Тюлень</h3>
+                    <p>Только тут оно совсем без рук, поэтому грабят его!</p>
+                    <!-- <div class="game-features">
                         <span class="feature">• Casino-style animation</span>
                         <span class="feature">• All 8 winning combinations</span>
-                    </div>
+                    </div> -->
                     <button class="play-btn btn-component" onclick="startGame('slot-machine')">
-                        ▶ Play Now
+                        ▶ Гоп-стоп
                     </button>
                 </div>
                 
                 <div class="game-card card-component" data-game="spinning-wheel">
-                    <div class="game-icon">🛞</div>
-                    <h3>Spinning Wheel</h3>
-                    <p>Spin the wheel of fortune!</p>
-                    <div class="game-features">
+                    <div class="game-icon">🥁</div>
+                    <h3>Поле Чудес</h3>
+                    <p>Тюленья версия, без Якубовича, но с блек джеком.</p>
+                    <!-- <div class="game-features">
                         <span class="feature">• Classic wheel spin mechanics</span>
                         <span class="feature">• 6 sections with card titles</span>
-                    </div>
+                    </div> -->
                     <button class="play-btn btn-component" onclick="startGame('spinning-wheel')">
-                        ▶ Spin Now
+                        ▶ Вращать барабан
                     </button>
                 </div>
                 
@@ -74,8 +74,8 @@
             </div>
             
             <div class="hub-footer">
-                <p>Select a game above to begin your card adventure!</p>
-                <div><button class="play-btn" id="clear-state">Clear State</button></div>
+                <p>Выбери свое приключение и проверь свою удачу!</p>
+                <!-- <div><button class="play-btn" id="clear-state">Сбросить</button></div> -->
             </div>
         </div>
     </div>
@@ -85,10 +85,10 @@
         <div class="game-container">
             <header>
                 <div class="game-nav">
-                    <button class="back-btn" onclick="backToHub()">← Back to Hub</button>
+                    <button class="back-btn" onclick="backToHub()">← На главную</button>
                 </div>
-                <h1>Card Game</h1>
-                <p>Choose wisely! You can only pick one card.</p>
+                <h1>Расклад Удачи</h1>
+                <p>Выбор сделать можно лишь раз, но удача в любом случае на твоей стороне!</p>
             </header>
             
             <div id="game-board" class="game-board">
@@ -97,10 +97,10 @@
             
             <div id="result-modal" class="result-modal hidden">
                 <div class="modal-content">
-                    <h2>Game Complete!</h2>
+                    <h2>🎉 УРА! 🎉</h2>
                     <p id="result-message"></p>
                     <div class="modal-buttons">
-                        <button class="play-btn" onclick="backToHub()">Back to Hub</button>
+                        <button class="play-btn" onclick="backToHub()">На главную</button>
                     </div>
                 </div>
             </div>
@@ -112,10 +112,10 @@
         <div class="game-container">
             <header>
                 <div class="game-nav">
-                    <button class="back-btn" onclick="backToHub()">← Back to Hub</button>
+                    <button class="back-btn" onclick="backToHub()">← На главную</button>
                 </div>
-                <h1>🎰 Triple Card Slots</h1>
-                <p>Match the combination to win your card reward!</p>
+                <h1>🎰 Одноластый Тюлень</h1>
+                <p>Шансы выиграть здесь обычно не велики, но для тебя они равны 100%!</p>
             </header>
             
             <div class="slot-machine-container">
@@ -134,14 +134,14 @@
                             <div id="slot-reel-3" class="slot-reel"></div>
                         </div>
                         <button id="spin-button" class="play-btn">
-                            <span class="button-text">🎰 SPIN</span>
+                            <span class="button-text">Гоп-Стоп</span>
                         </button>
                     </div>
                     
                     
                     <!-- Legend Section -->
                     <div class="slot-legend">
-                        <h3>🏆 Winning Combinations</h3>
+                        <h3>🏆 Что сегодня можно выиграть</h3>
                         <div id="slot-legend-list" class="legend-list">
                             <!-- Legend items will be populated dynamically -->
                         </div>
@@ -152,11 +152,11 @@
             <!-- Result Modal -->
             <div id="slot-result-modal" class="result-modal hidden">
                 <div class="modal-content">
-                    <h2>🎉 Slot Result!</h2>
+                    <h2>🎉 УРА! 🎉</h2>
                     <p id="slot-result-message"></p>
                     <div class="modal-buttons">
                         <button class="play-btn btn-component" onclick="closeSlotModal()">
-                            Back to Hub
+                            На главную
                         </button>
                     </div>
                 </div>
@@ -169,10 +169,10 @@
         <div class="game-container">
             <header>
                 <div class="game-nav">
-                    <button class="back-btn" onclick="backToHub()">← Back to Hub</button>
+                    <button class="back-btn" onclick="backToHub()">← На главную</button>
                 </div>
-                <h1>🛞 Spinning Wheel</h1>
-                <p>Spin the wheel and let fate decide your fortune!</p>
+                <h1>🥁 Поле Чудес</h1>
+                <p>Сектор приз на барабане, вращай и выигрывай!</p>
             </header>
             
             <div class="wheel-container">                
@@ -183,7 +183,7 @@
                     </div>
                     <div class="wheel-arrow">▲</div>
                 </div>
-                <button id="wheel-center-button" class="play-btn" onclick="spinWheel()">Click SPIN to play!</button>
+                <button id="wheel-center-button" class="play-btn" onclick="spinWheel()">Я назову слово целиком!</button>
                 <div id="wheel-result-text" style="font-size: 1.2rem; color: #333; font-weight: bold;">
                 </div>
                 
@@ -191,11 +191,11 @@
             
             <div id="wheel-result-modal" class="result-modal hidden">
                 <div class="modal-content">
-                    <h2>🎉 Wheel Result!</h2>
+                    <h2>🎉 УРА! 🎉</h2>
                     <p id="wheel-result-message"></p>
                     <div class="modal-buttons">
                         <button class="play-btn btn-component" onclick="closeWheelModal()">
-                            Back to Hub
+                            На главную
                         </button>
                     </div>
                 </div>
